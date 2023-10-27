@@ -44,6 +44,7 @@
               class="btn"
               no-caps
               unelevated
+              @click="router.push('/admin/dashboard')"
             />
           </div>
         </div>
@@ -55,10 +56,19 @@
 <script lang="ts">
 import CardComponent from 'components/CardComponent.vue';
 import { defineComponent } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'LoginPage',
   components: { CardComponent },
+
+  setup() {
+    const router = useRouter();
+
+    return {
+      router,
+    };
+  },
 });
 </script>
 
