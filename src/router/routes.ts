@@ -16,14 +16,24 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'dashboard',
         name: 'Dashboard',
-        component: () => import('pages/DashboardPage.vue'),
+        component: () => import('pages/admin/DashboardPage.vue'),
         props: true,
       },
       {
         path: 'arrival',
         name: 'Arrival & Departure Room',
-        component: () => import('pages/ArrivalPage.vue'),
+        component: () => import('pages/admin/ArrivalPage.vue'),
         props: true,
+      },
+      {
+        path: 'reports/room-maid',
+        name: 'Room Maid Report',
+        component: () => import('pages/admin/reports/RoomMaidPage.vue'),
+      },
+      {
+        path: 'reports/auto-room-maid',
+        name: 'Auto Room Maid Sheet',
+        component: () => import('pages/admin/reports/AutoRoomMaidPage.vue'),
       },
     ],
   },

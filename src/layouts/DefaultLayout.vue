@@ -118,7 +118,7 @@
                   </q-btn>
                 </q-item>
 
-                <q-item v-else style="padding: 0; margin: 0px 16px">
+                <q-item v-else style="padding: 0; margin: 0px 8px">
                   <q-btn
                     align="left"
                     style="

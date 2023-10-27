@@ -4,7 +4,7 @@
       <div class="">
         <div class="row item-center justify-center">
           <q-img
-            src="../../public/images/Lingian-Logo.png"
+            src="/images/Lingian-Logo.png"
             spinner-color="white"
             class="img"
           />
