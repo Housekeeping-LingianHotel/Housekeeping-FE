@@ -1,14 +1,11 @@
 <template>
   <q-page class="container bg-white flex">
-    <page-subheading icon="task" />
+    <h1 class="tw-text-4xl tw-font-bold">Arrival</h1>
   </q-page>
 </template>
 
 <script lang="ts">
-import PageSubheading from 'src/components/PageSubheading.vue';
-
 export default {
   name: 'ArrivalPage',
-  components: { PageSubheading },
 };
 </script>

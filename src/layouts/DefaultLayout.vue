@@ -1,11 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header
-      reveal
-      bordered
-      class="tw-text-black tw-px-4 tw-py-2 tw-bg-[rgba(97,97,97,1)]"
-    >
-      <q-toolbar>
+    <q-header reveal bordered>
+      <q-toolbar class="tw-text-black tw-px-4 tw-py-2 tw-bg-[rgba(97,97,97,1)]">
         <q-toolbar-title class="tw-text-white tw-font-bold">
           Housekeeping Management System
         </q-toolbar-title>
@@ -22,6 +18,27 @@
             <q-icon size="32px" color="white" name="o_account_circle" />
           </q-btn>
         </div>
+      </q-toolbar>
+
+      <!-- Breadcrumbs -->
+      <q-toolbar
+        class="tw-font-medium tw-text-black tw-h-fit tw-w-full tw-py-3 tw-px-4 tw-bg-[rgba(212,228,206,1)]"
+      >
+        <q-breadcrumbs v-if="!$route.path.startsWith('/reports')" gutter="sm">
+          <q-breadcrumbs-el class="tw-gap-1">
+            <q-icon :name="$route.meta.icon" size="24px" />
+            {{ $route.name?.toString() }}
+          </q-breadcrumbs-el>
+        </q-breadcrumbs>
+
+        <q-breadcrumbs v-else gutter="xs">
+          <q-breadcrumbs-el class="tw-text-black tw-gap-1">
+            <q-icon name="analytics" size="24px" />
+            Reports
+          </q-breadcrumbs-el>
+
+          <q-breadcrumbs-el :label="$route.name?.toString()" />
+        </q-breadcrumbs>
       </q-toolbar>
     </q-header>
 
@@ -43,9 +60,9 @@
       <q-scroll-area class="tw-flex-[2_2_0%]">
         <q-list>
           <!-- Menu List -->
-          <template v-for="(menuItem, index) in menuList" :key="index">
+          <template v-for="(menu, index) in menus" :key="index">
             <q-item
-              v-if="$route.name !== menuItem.name"
+              v-if="$route.name !== menu.name"
               class="tw-px-4 tw-py-0 tw-my-[2px]"
             >
               <q-btn
@@ -55,12 +72,12 @@
                 unelevated
                 @click="
                   router.push({
-                    name: menuItem.name,
+                    name: menu.name,
                   })
                 "
               >
                 <div class="tw-text-left tw-py-1 tw-px-0">
-                  {{ menuItem.name }}
+                  {{ menu.name }}
                 </div>
               </q-btn>
             </q-item>
@@ -73,7 +90,7 @@
                 unelevated
               >
                 <div class="tw-text-left tw-py-1 tw-px-0">
-                  {{ menuItem.name }}
+                  {{ menu.name }}
                 </div>
               </q-btn>
             </q-item>
@@ -90,9 +107,9 @@
             label="Reports"
           >
             <q-list class="tw-bg-white">
-              <template v-for="(reportItem, index) in reportList" :key="index">
+              <template v-for="(reportMenu, index) in reportMenus" :key="index">
                 <q-item
-                  v-if="$route.name !== reportItem.name"
+                  v-if="$route.name !== reportMenu.name"
                   class="tw-p-0 tw-my-0 tw-mx-2"
                 >
                   <q-btn
@@ -102,12 +119,12 @@
                     unelevated
                     @click="
                       router.push({
-                        name: reportItem.name,
+                        name: reportMenu.name,
                       })
                     "
                   >
                     <div class="tw-text-left tw-py-1">
-                      {{ reportItem.name }}
+                      {{ reportMenu.name }}
                     </div>
                   </q-btn>
                 </q-item>
@@ -120,7 +137,7 @@
                     unelevated
                   >
                     <div class="tw-text-left tw-py-1">
-                      {{ reportItem.name }}
+                      {{ reportMenu.name }}
                     </div>
                   </q-btn>
                 </q-item>
@@ -136,6 +153,7 @@
         icon-right="o_logout"
         no-caps
         label="Logout"
+        @click="router.push('/login')"
       ></q-btn>
     </q-drawer>
 
@@ -147,122 +165,14 @@
 
 <script>
 import { useRouter } from 'vue-router';
+import { menus, reportMenus } from 'src/data/menus';
 
 export default {
   name: 'DefaultLayout',
-  data() {
-    const menuList = [
-      {
-        path: '/dashboard',
-        name: 'Dashboard',
-      },
-      {
-        path: '/arrival',
-        name: 'Arrival & Departure Room',
-      },
-      {
-        path: '/cleaned',
-        name: 'Cleaned Room',
-      },
-      {
-        path: '/dirty',
-        name: 'Dirty Room',
-      },
-      {
-        path: '/room-occupancy',
-        name: 'Room Occupancy Overview',
-      },
-      {
-        path: '/status',
-        name: 'Status',
-      },
-      {
-        path: '/ooo',
-        name: 'O-O-O and Off Market Rooms',
-      },
-      {
-        path: '/rooming-list',
-        name: 'Rooming List',
-      },
-      {
-        path: '/discrepancy',
-        name: 'Discrepancy',
-      },
-      {
-        path: '/lost-found',
-        name: 'Lost & Found',
-      },
-    ];
-
-    const reportList = [
-      {
-        path: '/reports/room-maid',
-        name: 'Room Maid Report',
-      },
-      {
-        path: '/reports/auto-room-maid',
-        name: 'Auto Room Maid Sheet',
-      },
-      {
-        path: '/reports/daily-room',
-        name: 'Daily Room Usage',
-      },
-      {
-        path: '/reports/reservation-room',
-        name: 'Reservation Room Plan',
-      },
-      {
-        path: '/reports/room-count',
-        name: 'Room Count Sheet',
-      },
-      {
-        path: '/reports/room-plan',
-        name: 'Room Plan',
-      },
-      {
-        path: '/reports/task-report',
-        name: 'Task Report List',
-      },
-      {
-        path: '/reports/guest-preference',
-        name: 'Guest Preference List',
-      },
-      {
-        path: '/reports/vip-list',
-        name: 'VIP List',
-      },
-      {
-        path: '/reports/room-change',
-        name: 'Room Change Report',
-      },
-      {
-        path: '/reports/monthly-room',
-        name: 'Monthly Room Occupancy Forecast',
-      },
-      {
-        path: '/reports/extrabed-availabilty',
-        name: 'Extrabed Availabilty',
-      },
-      {
-        path: '/reports/stock-onhand',
-        name: 'Stock Onhand List',
-      },
-      {
-        path: '/reports/purchase-request',
-        name: 'Purchase Request',
-      },
-    ];
-
-    return {
-      isActive: false,
-      menuList,
-      reportList,
-    };
-  },
   setup() {
     const router = useRouter();
 
-    return { router };
+    return { router, isActive: false, menus, reportMenus };
   },
   methods: {
     toggleActive() {
