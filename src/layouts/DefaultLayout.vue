@@ -3,25 +3,22 @@
     <q-header
       reveal
       bordered
-      class="text-black q-px-sm q-py-xs"
-      style="background: rgba(97, 97, 97, 1)"
+      class="tw-text-black tw-px-4 tw-py-2 tw-bg-[rgba(97,97,97,1)]"
     >
       <q-toolbar>
-        <q-toolbar-title
-          style="color: rgba(255, 255, 255, 1); font-weight: bold"
-        >
+        <q-toolbar-title class="tw-text-white tw-font-bold">
           Housekeeping Management System
         </q-toolbar-title>
 
         <!-- Icon BTNs -->
         <div>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_notifications" />
           </q-btn>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_email" />
           </q-btn>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_account_circle" />
           </q-btn>
         </div>
@@ -35,25 +32,25 @@
       v-model="leftDrawerOpen"
       side="left"
       bordered
-      style="display: flex; flex-direction: column"
+      class="tw-flex tw-flex-col"
     >
-      <q-item style="flex: 1 1 0%; margin: 8px">
+      <q-item class="tw-flex-1 tw-m-2">
         <q-item-section>
-          <q-img src="../../public/images/Lingian-Logo.png" />
+          <q-img src="/images/Lingian-Logo.png" />
         </q-item-section>
       </q-item>
 
-      <q-scroll-area style="flex: 2 2 0%">
+      <q-scroll-area class="tw-flex-[2_2_0%]">
         <q-list>
           <!-- Menu List -->
           <template v-for="(menuItem, index) in menuList" :key="index">
             <q-item
               v-if="$route.name !== menuItem.name"
-              style="padding: 0px 16px; margin: 2px 0"
+              class="tw-px-4 tw-py-0 tw-my-[2px]"
             >
               <q-btn
                 align="left"
-                style="width: 100%; padding: 0 16px"
+                class="tw-w-full tw-py-0 tw-px-4"
                 no-caps
                 unelevated
                 @click="
@@ -62,26 +59,20 @@
                   })
                 "
               >
-                <div style="text-align: left; padding: 4px 0">
+                <div class="tw-text-left tw-py-1 tw-px-0">
                   {{ menuItem.name }}
                 </div>
               </q-btn>
             </q-item>
 
-            <q-item v-else style="padding: 0 16px; margin: 2px 0">
+            <q-item v-else class="tw-px-4 tw-py-0 tw-my-[2px]">
               <q-btn
                 align="left"
-                style="
-                  width: 100%;
-                  padding: 0 16px;
-                  background: rgba(230, 246, 236, 1);
-                  color: rgba(0, 100, 48, 1);
-                  font-weight: bold;
-                "
+                class="tw-w-full tw-py-0 tw-px-4 tw-font-bold tw-bg-[rgba(230,246,236,1)] tw-text-[rgba(0,100,48,1)]"
                 no-caps
                 unelevated
               >
-                <div style="text-align: left; padding: 4px 0">
+                <div class="tw-text-left tw-py-1 tw-px-0">
                   {{ menuItem.name }}
                 </div>
               </q-btn>
@@ -90,20 +81,23 @@
 
           <!-- Report List -->
           <q-expansion-item
-            style="margin: 0 16px; font-weight: 500"
-            :class="{ 'active-expansion': isActive }"
+            class="tw-my-0 tw-mx-4 tw-font-medium"
+            :class="{
+              'tw-bg-[rgba(230,246,236,1)] tw-text-[rgba(0,100,48,1)] tw-font-bold':
+                isActive,
+            }"
             @update:model-value="toggleActive"
             label="Reports"
           >
-            <q-list style="background-color: white">
+            <q-list class="tw-bg-white">
               <template v-for="(reportItem, index) in reportList" :key="index">
                 <q-item
                   v-if="$route.name !== reportItem.name"
-                  style="padding: 0; margin: 0px 8px"
+                  class="tw-p-0 tw-my-0 tw-mx-2"
                 >
                   <q-btn
                     align="left"
-                    style="width: 100%; padding: 0 16px; color: black"
+                    class="tw-w-full tw-py-0 tw-px-4 tw-text-black"
                     no-caps
                     unelevated
                     @click="
@@ -112,25 +106,20 @@
                       })
                     "
                   >
-                    <div style="text-align: left; padding: 4px 0">
+                    <div class="tw-text-left tw-py-1">
                       {{ reportItem.name }}
                     </div>
                   </q-btn>
                 </q-item>
 
-                <q-item v-else style="padding: 0; margin: 0px 8px">
+                <q-item v-else class="tw-p-0 tw-my-0 tw-mx-2">
                   <q-btn
                     align="left"
-                    style="
-                      width: 100%;
-                      padding: 0 16px;
-                      color: rgba(0, 100, 48, 1);
-                      font-weight: bold;
-                    "
+                    class="tw-w-full tw-py-0 tw-px-4 tw-text-[rgba(0,100,48,1)] tw-font-bold"
                     no-caps
                     unelevated
                   >
-                    <div style="text-align: left; padding: 4px 0">
+                    <div class="tw-text-left tw-py-1">
                       {{ reportItem.name }}
                     </div>
                   </q-btn>
@@ -143,7 +132,7 @@
 
       <!-- Logout BTN -->
       <q-btn
-        style="padding: 16px 0"
+        class="tw-py-4 tw-px-0"
         icon-right="o_logout"
         no-caps
         label="Logout"
@@ -282,11 +271,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.active-expansion {
-  background-color: rgba(230, 246, 236, 1) !important;
-  color: rgba(0, 100, 48, 1) !important;
-  font-weight: bold !important;
-}
-</style>
