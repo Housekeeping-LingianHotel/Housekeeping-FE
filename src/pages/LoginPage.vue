@@ -44,7 +44,7 @@
               class="btn"
               no-caps
               unelevated
-              @click="router.push('/admin/dashboard')"
+              @click="router.push('/')"
             />
           </div>
         </div>

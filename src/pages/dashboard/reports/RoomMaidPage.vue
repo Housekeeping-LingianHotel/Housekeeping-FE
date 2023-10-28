@@ -1,14 +1,11 @@
 <template>
   <q-page class="container bg-white flex">
-    <page-subheading />
+    <h1 class="tw-text-4xl tw-font-bold">Room Maid</h1>
   </q-page>
 </template>
 
 <script lang="ts">
-import PageSubheading from 'src/components/PageSubheading.vue';
-
 export default {
   name: 'RoomMaidPage',
-  components: { PageSubheading },
 };
 </script>
