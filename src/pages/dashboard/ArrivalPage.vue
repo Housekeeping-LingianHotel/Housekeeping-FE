@@ -87,27 +87,16 @@
       </CardComponent>
     </div>
     <div class="tw-mt-10">
-      <q-table
-        :rows="rows"
-        :columns="columns"
-        row-key="name"
-        square
-        :table-header-style="{
-          backgroundColor: '#069550',
-          color: '#ffffff',
-          padding: '10px',
-        }"
-        :card-style="{ boxShadow: 'none' }"
-        rows-per-page-label="Show"
-      />
+      <TableComponent :columns="dataColumns" :rows="dataRows" />
     </div>
   </q-page>
 </template>
 
 <script>
 import CardComponent from 'src/components/CardComponent.vue';
+import TableComponent from 'src/components/TableComponent.vue';
 
-const columns = [
+const dataColumns = [
   {
     name: 'room-number',
     required: true,
@@ -152,7 +141,7 @@ const columns = [
   },
 ];
 
-const rows = [
+const dataRows = [
   {
     name: '1',
     roomstatus: 'Expected Departure',
@@ -257,11 +246,11 @@ const rows = [
 
 export default {
   name: 'ArrivalPage',
-  components: { CardComponent },
+  components: { CardComponent, TableComponent },
   setup() {
     return {
-      columns,
-      rows,
+      dataColumns,
+      dataRows,
     };
   },
 };
@@ -270,27 +259,5 @@ export default {
 <style>
 .shadow {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.q-table th {
-  @apply tw-text-sm tw-border-r-4 tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-white;
-}
-.q-table tbody td {
-  font-size: 14px;
-  border-right: 4px solid white;
-}
-.q-table tbody tr:nth-child(even) {
-  background-color: #fafafa;
-}
-.q-table__bottom {
-  @apply tw-inline-flex tw-justify-between tw-text-sm tw-border-2 tw-border-b-0 tw-border-l-0 tw-border-r-0 tw-border-[#069550] tw-bg-[#fafafa] tw-relative;
-}
-.q-table__control:nth-child(2) {
-  @apply tw-absolute;
-}
-.q-table__bottom .q-btn .q-icon {
-  @apply tw-text-3xl tw-text-[#069550];
-}
-.disabled * {
-  @apply tw-opacity-0;
 }
 </style>
