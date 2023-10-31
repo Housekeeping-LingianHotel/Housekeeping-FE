@@ -3,8 +3,10 @@
     <div
       class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-gap-5 tw-items-center"
     >
-      <CardComponent class="tw-p-5">
-        <h1 class="tw-text-black tw-font-semibold tw-text-xl">Arrival</h1>
+      <CardComponent v-for="datas in cardData" :key="datas.id" class="tw-p-5">
+        <h1 class="tw-text-black tw-font-semibold tw-text-xl">
+          {{ datas.name }}
+        </h1>
         <table>
           <thead>
             <tr>
@@ -14,72 +16,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="tw-py-1 tw-px-3">Checked in Today</td>
+            <tr v-for="item in datas.dataName" :key="item.id">
+              <td class="tw-py-1 tw-px-3">
+                {{ item.name }}
+              </td>
               <td align="center">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">12</p>
+                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">
+                  {{ item.room }}
+                </p>
               </td>
               <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">24</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="tw-p-3">Arriving</td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">60</p>
-              </td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">70</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="tw-p-3">Total Arrival</td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">72</p>
-              </td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">94</p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </CardComponent>
-      <CardComponent class="tw-p-5">
-        <h1 class="tw-text-black tw-font-semibold tw-text-xl">Departure</h1>
-        <table>
-          <thead>
-            <tr>
-              <td class="tw-opacity-0 tw-p-3">.</td>
-              <td align="center" class="tw-px-3">Room</td>
-              <td align="center" class="tw-p-3">Person</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="tw-py-1 tw-px-3">Departed Today</td>
-              <td align="center">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">12</p>
-              </td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">24</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="tw-p-3">Departing</td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">60</p>
-              </td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">70</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="tw-p-3">Total Departure</td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">72</p>
-              </td>
-              <td align="center" class="tw-p-3">
-                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">94</p>
+                <p class="shadow tw-w-[111px] tw-py-1 tw-font-semibold">
+                  {{ item.person }}
+                </p>
               </td>
             </tr>
           </tbody>
@@ -95,6 +44,57 @@
 <script>
 import CardComponent from 'src/components/CardComponent.vue';
 import TableComponent from 'src/components/TableComponent.vue';
+
+const cardData = [
+  {
+    id: 1,
+    name: 'Arrival',
+    dataName: [
+      {
+        id: 1,
+        name: 'Checked in Today',
+        room: '12',
+        person: '24',
+      },
+      {
+        id: 2,
+        name: 'Arriving',
+        room: '60',
+        person: '70',
+      },
+      {
+        id: 3,
+        name: 'Total Arrival',
+        room: '72',
+        person: '94',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Departure',
+    dataName: [
+      {
+        id: 1,
+        name: 'Departed Today',
+        room: '12',
+        person: '24',
+      },
+      {
+        id: 2,
+        name: 'Departing',
+        room: '60',
+        person: '70',
+      },
+      {
+        id: 3,
+        name: 'Total Departure',
+        room: '72',
+        person: '94',
+      },
+    ],
+  },
+];
 
 const dataColumns = [
   {
@@ -251,6 +251,7 @@ export default {
     return {
       dataColumns,
       dataRows,
+      cardData,
     };
   },
 };
