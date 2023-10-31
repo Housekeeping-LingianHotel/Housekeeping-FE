@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="tw-overflow-x-hidden">
     <q-header reveal bordered>
       <q-toolbar class="tw-text-black tw-px-4 tw-py-2 tw-bg-[rgba(97,97,97,1)]">
         <q-toolbar-title class="tw-text-white tw-font-bold">
@@ -51,13 +51,13 @@
       bordered
       class="tw-flex tw-flex-col"
     >
-      <q-item class="tw-flex-1 tw-m-2">
+      <q-item class="tw-m-2">
         <q-item-section>
-          <q-img src="/images/Lingian-Logo.png" />
+          <q-img src="/images/Lingian-Logo.png" fit="contain" />
         </q-item-section>
       </q-item>
 
-      <q-scroll-area class="tw-flex-[2_2_0%]">
+      <q-scroll-area class="tw-flex-[3_3_0%]">
         <q-list>
           <!-- Menu List -->
           <template v-for="(menu, index) in menus" :key="index">
@@ -70,11 +70,7 @@
                 class="tw-w-full tw-py-0 tw-px-4"
                 no-caps
                 unelevated
-                @click="
-                  router.push({
-                    name: menu.name,
-                  })
-                "
+                @click="pushRoute({ name: menu.name })"
               >
                 <div class="tw-text-left tw-py-1 tw-px-0">
                   {{ menu.name }}
@@ -117,11 +113,7 @@
                     class="tw-w-full tw-py-0 tw-px-4 tw-text-black"
                     no-caps
                     unelevated
-                    @click="
-                      router.push({
-                        name: reportMenu.name,
-                      })
-                    "
+                    @click="pushRoute({ name: reportMenu.name })"
                   >
                     <div class="tw-text-left tw-py-1">
                       {{ reportMenu.name }}
@@ -154,11 +146,13 @@
         no-caps
         label="Logout"
         @click="router.push('/login')"
-      ></q-btn>
+      />
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <Transition name="slide-fade" appear mode="out-in">
+        <router-view :key="$route.fullPath" />
+      </Transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -178,6 +172,22 @@ export default {
     toggleActive() {
       this.isActive = !this.isActive;
     },
+    pushRoute(path) {
+      this.router.push(path);
+    },
   },
 };
 </script>
+
+<style scoped>
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-3%);
+  opacity: 0;
+}
+</style>

@@ -287,7 +287,7 @@ export default {
 .q-table__control:nth-child(2) {
   @apply tw-absolute;
 }
-.q-btn .q-icon {
+.q-table__bottom .q-btn .q-icon {
   @apply tw-text-3xl tw-text-[#069550];
 }
 .disabled * {
