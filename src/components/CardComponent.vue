@@ -1,5 +1,5 @@
 <template>
-  <q-card class="my-card tw-rounded-2xl">
+  <q-card class="my-card tw-rounded-[20px] tw-border-[1px]">
     <q-card-section>
       <slot></slot>
     </q-card-section>
@@ -14,4 +14,9 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.my-card {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+</style>
