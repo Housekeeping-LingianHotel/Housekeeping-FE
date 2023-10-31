@@ -21,7 +21,8 @@
 
     </div>
     
-    <div class="tw-flex tw-flex-col md:tw-flex-row tw-justify-start tw-gap-5 tw-items-center tw-mt-8">
+    <div class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-gap-5 tw-items-center tw-mt-8">
+      <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
     <CardComponent class="tw-w-80 tw-h-44">
         <h1 class="tw-text-black tw-font-semibold tw-text-xl">Display</h1>
         <div class="tw-mt-4">
@@ -54,13 +55,15 @@
         </div>
         
       </CardComponent>
-
-      <CardComponent class="tw-w-64 tw-h-52">
+    </div>
+    <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
+      <CardComponent class="tw-flex-1 tw-h-52">
         <textarea class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"></textarea>
       </CardComponent>
-      <CardComponent class="tw-w-64 tw-h-52">
+      <CardComponent class="tw-flex-1 tw-h-52">
         <textarea class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"></textarea>
       </CardComponent>
+    </div>
     </div>
   </CardComponent>
   </q-page>
