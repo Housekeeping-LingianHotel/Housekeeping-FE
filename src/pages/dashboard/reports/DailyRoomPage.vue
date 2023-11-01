@@ -40,7 +40,7 @@
                   type="date"
                   id="tanggal"
                   name="tanggal"
-                  class="tw-border tw-rounded tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
+                  class="tw-border tw-rounded-lg tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
                 />
               </div>
               <div
@@ -70,7 +70,7 @@
               <div class="tw-mt-4">
                 <select
                   v-model="selectedColumn"
-                  class="tw-border tw-rounded tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
+                  class="tw-border tw-rounded-lg tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
                 >
                   <option
                     v-for="column in columns"
