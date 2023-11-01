@@ -1,6 +1,6 @@
 <template>
   <q-card class="my-card tw-rounded-[20px] tw-border-[1px]">
-    <q-card-section>
+    <q-card-section class="tw-h-full">
       <slot></slot>
     </q-card-section>
   </q-card>
