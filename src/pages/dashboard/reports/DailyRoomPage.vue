@@ -57,10 +57,10 @@
       </CardComponent>
     </div>
     <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-      <CardComponent class="tw-flex-1 tw-h-52">
+      <CardComponent class="tw-flex-2 tw-h-52">
         <textarea class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"></textarea>
       </CardComponent>
-      <CardComponent class="tw-flex-1 tw-h-52">
+      <CardComponent class="tw-flex-2 tw-h-52">
         <textarea class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"></textarea>
       </CardComponent>
     </div>
