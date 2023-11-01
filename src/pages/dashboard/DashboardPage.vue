@@ -135,34 +135,22 @@
 import CardComponent from 'src/components/CardComponent.vue';
 import { arrivalDeparture, roomOccupancy } from 'src/data/room-stats';
 import { houseKeepingActivity } from 'src/data/stats';
-import { ref } from 'vue';
-
-interface ColumnInterface {
-  name: string;
-  label: string;
-  field: string | ((row: any) => any);
-  required?: boolean;
-  align?: 'center' | 'left' | 'right';
-  sortable?: boolean;
-  sort?: (a: any, b: any, rowA: any, rowB: any) => number;
-  // ... other properties
-  headerClasses?: string;
-}
+import { ColumnInterface } from 'src/types/table';
 
 const columns: ColumnInterface[] = [
   {
     name: 'name',
     label: 'Room No',
-    field: (row: any) => row.name,
+    field: (row) => row.name,
     align: 'center',
     required: true,
     sortable: true,
   },
   {
-    name: 'userId',
+    name: 'user-id',
     align: 'center',
     label: 'User Id',
-    field: 'userId',
+    field: 'user_id',
     sortable: true,
   },
   {
@@ -177,42 +165,42 @@ const columns: ColumnInterface[] = [
 const rows = [
   {
     name: '1',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '2',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '3',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '4',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '5',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '6',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '7',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
   {
     name: '8',
-    userId: 1111,
+    user_id: 1111,
     status: '-',
   },
 ];

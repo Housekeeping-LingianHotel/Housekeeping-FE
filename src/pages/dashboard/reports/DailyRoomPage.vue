@@ -40,7 +40,7 @@
                   type="date"
                   id="tanggal"
                   name="tanggal"
-                  class="tw-border tw-rounded tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
+                  class="tw-border tw-rounded-lg tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
                 />
               </div>
               <div
@@ -70,7 +70,7 @@
               <div class="tw-mt-4">
                 <select
                   v-model="selectedColumn"
-                  class="tw-border tw-rounded tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
+                  class="tw-border tw-rounded-lg tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
                 >
                   <option
                     v-for="column in columns"
@@ -101,7 +101,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import CardComponent from 'src/components/CardComponent.vue';
 
 export default {
@@ -253,7 +253,7 @@ const rows = [
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .dailyRoom .q-table th {
-  @apply tw-text-sm tw-border-r-4 tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-white;
+  @apply tw-text-sm tw-border-r-4 tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-white
 }
 .dailyRoom .q-table tbody td {
   font-size: 14px;
@@ -263,15 +263,15 @@ const rows = [
   background-color: #fafafa;
 }
 .dailyRoom .q-table__bottom {
-  @apply tw-inline-flex tw-justify-between tw-text-sm tw-border-2 tw-border-b-0 tw-border-l-0 tw-border-r-0 tw-border-[#069550] tw-bg-[#fafafa] tw-relative;
+  @apply tw-inline-flex tw-justify-between tw-text-sm tw-border-2 tw-border-b-0 tw-border-l-0 tw-border-r-0 tw-border-[#069550] tw-bg-[#fafafa] tw-relative
 }
 .dailyRoom .q-table__control:nth-child(2) {
-  @apply tw-absolute;
+  @apply tw-absolute
 }
 .dailyRoom .q-table__bottom .q-btn .q-icon {
-  @apply tw-text-3xl tw-text-[#069550];
+  @apply tw-text-3xl tw-text-[#069550]
 }
 .dailyRoom .disabled * {
-  @apply tw-opacity-0;
+  @apply tw-opacity-0
 }
 </style>

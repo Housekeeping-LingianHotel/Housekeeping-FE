@@ -9,11 +9,77 @@
         :personTotal="data.personTotal"
       ></occupancy-card>
     </div>
+    <div class="tw-px-5">
+      <div
+        class="tw-mt-5 tw-w-full tw-border-[1px] tw-border-black tw-rounded-[20px]"
+      >
+        <CardComponent>
+          <div class="flex tw-justify-between tw-items-center tw-px-5">
+            <h1 class="tw-text-[28px] tw-font-semibold">Percentage</h1>
+            <div class="tw-flex tw-items-center tw-gap-3">
+              <q-select
+                borderless
+                v-model="model"
+                transition-show="jump-up"
+                transition-hide="jump-up"
+                :options="options"
+                label="Show by Month"
+                label-color="dark-grey"
+                color="grey"
+                dropdown-icon="keyboard_arrow_down"
+                style="width: 150px"
+              />
+            </div>
+          </div>
+          <div>
+            <Bar :data="data" :options="optionsChart" />
+          </div>
+        </CardComponent>
+      </div>
+    </div>
   </q-page>
 </template>
 
-<script lang="">
+<script>
+import { ref } from 'vue';
 import OccupancyCard from 'src/components/OccupancyCard.vue';
+import CardComponent from 'src/components/CardComponent.vue';
+import { Bar } from 'vue-chartjs';
+import {
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale,
+} from 'chart.js';
+
+ChartJS.register(
+  Title,
+  Tooltip,
+  Legend,
+  BarElement,
+  CategoryScale,
+  LinearScale
+);
+
+const data = {
+  labels: [
+    'Oc.Room',
+    'Com.Room',
+    'HU.Room',
+    'OOO.Room',
+    'Inact.Room',
+    'Est.Room',
+  ],
+  datasets: [{ data: [5, 0, 4, 15, 4, 14] }],
+};
+
+const optionsChart = {
+  responsive: true,
+  maintainAspectRatio: false,
+};
 
 const cardData = [
   {
@@ -56,11 +122,21 @@ const cardData = [
 
 export default {
   name: 'RoomOccupancyPage',
-  components: { OccupancyCard },
+  components: { OccupancyCard, CardComponent, Bar },
   setup() {
     return {
       cardData,
+      model: ref(null),
+      options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
+    };
+  },
+  data() {
+    return {
+      data,
+      optionsChart,
     };
   },
 };
 </script>
+
+<style></style>
