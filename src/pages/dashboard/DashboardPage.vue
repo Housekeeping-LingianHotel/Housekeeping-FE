@@ -1,7 +1,7 @@
 <template>
   <q-page class="tw-bg-white tw-flex tw-flex-col tw-gap-y-6 tw-py-4 tw-px-10">
     <div class="tw-flex tw-gap-x-10">
-      <card-component class="tw-flex-1 tw-py-2 tw-px-4">
+      <card-component class="tw-flex-1 tw-py-2 tw-px-4 height-full-card">
         <h6 class="tw-text-lg tw-font-semibold">Arrival & Departure</h6>
         <table class="tw-w-full tw-mx-4 tw-mt-2">
           <thead>
@@ -35,7 +35,7 @@
         </table>
       </card-component>
 
-      <card-component class="tw-flex-1 tw-py-2 tw-px-4">
+      <card-component class="tw-flex-1 tw-py-2 tw-px-4 height-full-card">
         <h6 class="tw-text-lg tw-font-semibold">Housekeeping Activity</h6>
         <table class="tw-mx-auto tw-mt-2">
           <tbody>
@@ -118,12 +118,7 @@
             >
               3
             </q-card>
-
-            <div
-              class="tw-text-lg tw-font-bold tw-px-2 tw-text-white tw-bg-[rgba(255,0,0,1)]"
-            >
-              Time: 07:47:47
-            </div>
+            <TimerComponent :timeInSeconds="28067" />
           </div>
         </div>
       </div>
@@ -133,6 +128,7 @@
 
 <script lang="ts">
 import CardComponent from 'src/components/CardComponent.vue';
+import TimerComponent from 'src/components/TimerComponent.vue';
 import { arrivalDeparture, roomOccupancy } from 'src/data/room-stats';
 import { houseKeepingActivity } from 'src/data/stats';
 import { ColumnInterface } from 'src/types/table';
@@ -207,7 +203,7 @@ const rows = [
 
 export default {
   name: 'DashboardPage',
-  components: { CardComponent },
+  components: { CardComponent, TimerComponent },
   setup() {
     return {
       arrivalDeparture,
