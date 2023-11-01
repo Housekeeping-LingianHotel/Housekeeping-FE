@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.height-full-card .q-card {
+  @apply tw-h-full
+}
