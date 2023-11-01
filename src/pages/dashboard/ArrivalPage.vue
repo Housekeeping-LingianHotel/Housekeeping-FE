@@ -36,7 +36,11 @@
       </CardComponent>
     </div>
     <div class="tw-mt-10">
-      <TableComponent :columns="dataColumns" :rows="dataRows" />
+      <TableComponent
+        :columns="dataColumns"
+        :rows="dataRows"
+        :hide-pagination="false"
+      />
     </div>
   </q-page>
 </template>

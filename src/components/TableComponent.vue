@@ -12,6 +12,7 @@
       }"
       :card-style="{ boxShadow: 'none' }"
       rows-per-page-label="Show"
+      :hide-pagination="hidePagination"
     />
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
   props: {
     columns: Array,
     rows: Array,
+    hidePagination: Boolean,
   },
 };
 </script>
