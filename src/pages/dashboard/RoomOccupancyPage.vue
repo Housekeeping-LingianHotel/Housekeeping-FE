@@ -1,6 +1,6 @@
 <template>
   <q-page class="container bg-white">
-    <div class="tw-flex tw-items-center tw-justify-center tw-gap-5 tw-mt-16">
+    <div class="tw-flex tw-items-center tw-justify-between tw-mt-16 tw-px-5">
       <occupancy-card
         v-for="data in cardData"
         :key="data.id"

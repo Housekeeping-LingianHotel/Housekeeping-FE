@@ -1,0 +1,30 @@
+[
+  {
+    "board_id": 1,
+    "row": {
+      "id": 1
+    },
+    "column": {
+      "id": 1,
+      "type": {
+        "name": "text"
+      }
+    },
+    "text": "1 1",
+    "number": 0
+  },
+  {
+    "board_id": 1,
+    "row": {
+      "id": 1
+    },
+    "column": {
+      "id": 2,
+      "type": {
+        "name": "number"
+      }
+    },
+    "text": "",
+    "number": 12
+  }
+]

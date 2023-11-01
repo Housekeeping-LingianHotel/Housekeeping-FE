@@ -1,5 +1,5 @@
 <template>
-  <div class="tableComp tw-mt-10">
+  <div class="tableComp">
     <q-table
       :rows="rows"
       :columns="columns"
