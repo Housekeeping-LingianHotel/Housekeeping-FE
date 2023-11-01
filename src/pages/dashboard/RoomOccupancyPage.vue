@@ -32,7 +32,7 @@
             </div>
           </div>
           <div>
-            <Bar :data="data" :options="optionsChart" />
+            <Bar :data="data" :options="optionsChart" :plugins="chartPlugins" />
           </div>
         </CardComponent>
       </div>
@@ -55,14 +55,9 @@ import {
   LinearScale,
 } from 'chart.js';
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+const chartPlugins = [Legend, Title, Tooltip];
+
+ChartJS.register(BarElement, CategoryScale, LinearScale);
 
 const data = {
   labels: [
@@ -128,6 +123,7 @@ export default {
       cardData,
       model: ref(null),
       options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
+      chartPlugins,
     };
   },
   data() {
