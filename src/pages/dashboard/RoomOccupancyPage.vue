@@ -1,6 +1,6 @@
 <template>
   <q-page class="container bg-white">
-    <div class="tw-flex tw-items-center tw-justify-between tw-mt-16 tw-px-5">
+    <div class="tw-flex tw-items-center tw-justify-between tw-mt-14 tw-px-5">
       <occupancy-card
         v-for="data in cardData"
         :key="data.id"
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div>
-            <Bar :data="data" :options="optionsChart" :plugins="chartPlugins" />
+            <Bar :data="data" :options="optionsChart" />
           </div>
         </CardComponent>
       </div>
@@ -55,9 +55,7 @@ import {
   LinearScale,
 } from 'chart.js';
 
-const chartPlugins = [Legend, Title, Tooltip];
-
-ChartJS.register(BarElement, CategoryScale, LinearScale);
+ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
 
 const data = {
   labels: [
@@ -123,7 +121,6 @@ export default {
       cardData,
       model: ref(null),
       options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
-      chartPlugins,
     };
   },
   data() {
