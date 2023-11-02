@@ -7,7 +7,7 @@
       <!-- Pie Chart -->
       <div class="tw-flex tw-flex-1 tw-gap-8 tw-items-center">
         <div class="tw-flex-1">
-          <Pie :data="data" :options="options" />
+          <Pie :data="chartData" :options="options" />
         </div>
 
         <div
@@ -38,7 +38,7 @@
 
       <!-- Found & Lost -->
       <div class="tw-flex tw-flex-1 tw-gap-4">
-        <card-component class="tw-w-full">
+        <card-component class="height-full-card tw-w-full">
           <div
             class="tw-flex tw-flex-col tw-h-full tw-gap-4 tw-px-8 tw-py-4 tw-justify-center"
           >
@@ -53,7 +53,7 @@
           </div>
         </card-component>
 
-        <card-component class="tw-w-full">
+        <card-component class="height-full-card tw-w-full">
           <div
             class="tw-flex tw-flex-col tw-h-full tw-gap-4 tw-px-8 tw-py-4 tw-justify-center"
           >
@@ -83,7 +83,7 @@ import { ColumnInterface } from 'src/types/table';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const data = {
+const chartData = {
   labels: ['Lost', 'Found', 'Progress'],
   datasets: [
     {
@@ -298,7 +298,7 @@ export default {
   components: { CardComponent, Pie, TableComponent },
   data() {
     return {
-      data,
+      chartData,
       options,
       columns,
       rows,

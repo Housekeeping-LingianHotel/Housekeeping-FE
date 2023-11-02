@@ -1,6 +1,6 @@
 <template>
   <q-page class="container bg-white flex">
-    <div class="container tw-m-8 tw-overflow-auto tw-overflow-x-hidden tw-rounded-xl tw-border tw-border-gray-300">
+    <div class="container tw-shadow-md tw-m-8 tw-overflow-auto tw-overflow-x-hidden tw-rounded-xl tw-border tw-border-gray-300">
       <div class="tw-flex justify-end">
           <button class="tw-mx-1">
             <q-icon
@@ -40,7 +40,7 @@
         <input type="text" name="from" id="from" class="tw-bg-gray-100 tw-h-6 tw-font-bold tw-rounded-md tw-border tw-border-gray-300 tw-h-5 tw-py-1 tw-mx-2 text-black font-semibold placeholder-gray-400 placeholder-opacity-100 md:placeholder-opacity-0">
       </div>
         </div>
-      <table class="tw-table tw-m-5 tw-rounded-full">
+      <table class="tw-table tw-m-5 tw-shadow-md w-rounded-full">
         <thead>
           <tr>
             <th class="tw-px-11 tw-py-2">Room No</th>
