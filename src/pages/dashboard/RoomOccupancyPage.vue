@@ -1,6 +1,6 @@
 <template>
   <q-page class="container bg-white">
-    <div class="tw-flex tw-items-center tw-justify-between tw-mt-16 tw-px-5">
+    <div class="tw-flex tw-items-center tw-justify-between tw-mt-14 tw-px-5">
       <occupancy-card
         v-for="data in cardData"
         :key="data.id"
@@ -55,14 +55,7 @@ import {
   LinearScale,
 } from 'chart.js';
 
-ChartJS.register(
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale
-);
+ChartJS.register(Title, Tooltip, BarElement, CategoryScale, LinearScale);
 
 const data = {
   labels: [
