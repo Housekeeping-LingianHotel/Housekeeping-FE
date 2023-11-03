@@ -1,6 +1,6 @@
   <template>
     <q-page class="tw-container bg-white flex">
-      <div class="tw-container tw-overflow-x-auto tw-overflow-y-auto tw-shadow-md tw-m-8 tw-rounded-xl tw-border tw-border-gray-300">
+      <CardComponent class="tw-container tw-overflow-x-auto tw-overflow-y-auto tw-shadow-md tw-m-8 tw-rounded-xl tw-border tw-border-gray-300">
         <div class="tw-flex justify-end">
           <button class="tw-mx-1">
             <q-icon
@@ -62,12 +62,15 @@
             </tr>
           </tbody>
         </table>
-      </div>
+  </CardComponent>
     </q-page>
   </template>
 
   <script lang="ts">
+import CardComponent from 'src/components/CardComponent.vue';
+
   export default {
-    name: 'OOOPage',
-  };
+    name: "OOOPage",
+    components: { CardComponent }
+};
   </script>

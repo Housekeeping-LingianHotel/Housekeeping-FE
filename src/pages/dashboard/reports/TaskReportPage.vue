@@ -1,11 +1,19 @@
 <template>
   <q-page class="container bg-white flex">
-    <h1 class="tw-text-4xl tw-font-bold">Task Report</h1>
+    <div class="tw-container tw-overflow-x-auto tw-overflow-y-auto tw-shadow-md tw-m-8 tw-rounded-xl tw-border tw-border-gray-300">
+
+    </div>
+    <card-component>
+
+    </card-component>
   </q-page>
 </template>
 
 <script lang="ts">
+import CardComponent from 'src/components/CardComponent.vue';
+
 export default {
-  name: 'TaskReportPage',
+    name: "TaskReportPage",
+    components: { CardComponent }
 };
 </script>
