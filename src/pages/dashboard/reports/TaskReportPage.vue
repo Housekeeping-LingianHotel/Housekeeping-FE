@@ -1,11 +1,6 @@
 <template>
   <q-page class="container bg-white flex">
-    <div class="tw-container tw-overflow-x-auto tw-overflow-y-auto tw-shadow-md tw-m-8 tw-rounded-xl tw-border tw-border-gray-300">
-
-    </div>
-    <card-component>
-
-    </card-component>
+    <CardComponent></CardComponent>
   </q-page>
 </template>
 

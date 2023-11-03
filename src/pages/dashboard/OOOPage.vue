@@ -1,45 +1,123 @@
   <template>
     <q-page class="tw-container bg-white flex">
-      <CardComponent class="tw-container tw-overflow-x-auto tw-overflow-y-auto tw-shadow-md tw-m-8 tw-rounded-xl tw-border tw-border-gray-300">
-        <div class="tw-flex justify-end">
-          <button class="tw-mx-1">
-            <q-icon
-              name="fa-regular fa-square-check"
-              class="tw-text-4xl tw-py-2"
-              style="color: #069550"
-            />
-          </button>
-          <button class="tw-mx-2">
-            <q-icon
-              name="fa-solid fa-print"
-              class="tw-text-4xl tw-px-1"
-              style="color: #069550"
-            />
-          </button>
+      <CardComponent class="tw-overflow-x-auto tw-overflow-y-auto tw-m-8">
+        <div class="tw-flex tw-flex-col tw-gap-2">
+        <!-- Display Dropdown & Print Btn -->
+        <div class="tw-w-full tw-flex tw-justify-between">
+          <!-- Display Dropdown -->
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <h6 class="tw-text-lg tw-font-bold">Display</h6>
+            <q-btn-dropdown
+              class="tw-w-52 justify-between-btn"
+              align="left"
+              dropdown-icon="expand_more"
+              color="grey"
+              label="All"
+              no-caps
+              outline
+            >
+              <q-list>
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Photos</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Videos</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Articles</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-btn-dropdown>
+          </div>
+
+          <!-- Print Btn & squarecheck -->
+          <div class="flex">
+          <q-btn round padding="8px" flat>
+            <q-icon size="40px" color="green" name="o_print" />
+          </q-btn>
+
+          <q-btn round padding="8px" flat>
+          <q-icon
+            size="40px"
+            name="fa-regular fa-square-check"
+            color="green"
+          />
+          </q-btn>
+          </div>
         </div>
-        <div class="tw-flex">
-          <p class="tw-font-bold tw-text-1xl tw-ml-5 tw-mt-5">Display</p>
-          <select class="tw-ml-2 tw-w-24 tw-mt-5 tw-border-separate tw-rounded-md tw-border tw-border-gray-300 tw-font-bold">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-          </select>
-        </div>
+
+        <!-- Sorting Dropdown & From-To Input -->
         <div class="tw-flex tw-justify-between">
-          <div class="tw-flex">
-            <p class="tw-font-bold tw-text-1x1 tw-ml-5 tw-mt-5">Sorting</p>
-            <select class="tw-ml-2 tw-mt-5 tw-w-24 tw-rounded-md tw-border tw-border-gray-300 tw-font-bold">
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
+          <div class="tw-flex tw-items-center tw-gap-4">
+            <h6 class="tw-text-lg tw-font-bold">Sorting</h6>
+            <q-btn-dropdown
+              class="tw-w-52 justify-between-btn"
+              align="left"
+              dropdown-icon="expand_more"
+              color="grey"
+              label="Room Number"
+              no-caps
+              outline
+            >
+              <q-list>
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Photos</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Videos</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-close-popup>
+                  <q-item-section>
+                    <q-item-label>Articles</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-btn-dropdown>
           </div>
-          <div class="tw-flex">
-            <p class="tw-font-bold tw-text-1x1">From</p>
-            <input type="text" name="from" id="from" class="tw-bg-gray-100 tw-h-6 tw-font-bold tw-rounded-md tw-border tw-border-gray-300 tw-h-5 tw-py-1 tw-mx-2 text-black font-semibold placeholder-gray-400 placeholder-opacity-100 sm:placeholder-opacity-0">
-            <p class="tw-font-bold tw-text-1x1">To</p>
-            <input type="text" name="to" id="to" class="tw-bg-gray-100 tw-h-6 tw-font-bold tw-rounded-md tw-border tw-border-gray-300 tw-h-5 tw-py-1 tw-mx-2 text-black font-semibold placeholder-gray-400 placeholder-opacity-100 sm:placeholder-opacity-0">
+
+          <!-- From-To Input -->
+          <div class="tw-flex tw-gap-8">
+            <!-- From -->
+            <div class="tw-flex tw-items-center tw-gap-4">
+              <h6 class="tw-text-lg tw-font-bold">From :</h6>
+              <q-input
+                class="input-height-fit"
+                outlined
+                color="black"
+                v-model="fromInput"
+              />
+            </div>
+
+            <!-- To -->
+            <div class="tw-flex tw-items-center tw-gap-4">
+              <h6 class="tw-text-lg tw-font-bold">To :</h6>
+              <q-input
+                class="input-height-fit"
+                outlined
+                color="black"
+                v-model="toInput"
+              />
+            </div>
           </div>
         </div>
+      </div>
+        <TableComponent>
+          
+        </TableComponent>
         <table class="tw-table tw-m-5 tw-shadow-md w-rounded-full">
           <thead>
             <tr>
@@ -68,9 +146,10 @@
 
   <script lang="ts">
 import CardComponent from 'src/components/CardComponent.vue';
+import TableComponent from 'src/components/TableComponent.vue';
 
   export default {
     name: "OOOPage",
-    components: { CardComponent }
+    components: { CardComponent, TableComponent }
 };
   </script>
