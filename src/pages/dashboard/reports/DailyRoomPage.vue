@@ -33,7 +33,7 @@
           class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-gap-5 tw-items-center tw-mt-8"
         >
           <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-            <CardComponent class="tw-w-80 tw-h-44">
+            <CardComponent class="tw-w-80 height-full-card">
               <h1 class="tw-text-black tw-font-semibold tw-text-xl">Display</h1>
               <div class="tw-mt-4">
                 <input
@@ -63,7 +63,7 @@
               </div>
             </CardComponent>
 
-            <CardComponent class="tw-w-80 tw-h-44">
+            <CardComponent class="tw-w-80 height-full-card">
               <h1 class="tw-text-black tw-font-semibold tw-text-xl">
                 Sorting :
               </h1>
@@ -84,12 +84,12 @@
             </CardComponent>
           </div>
           <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-            <CardComponent class="tw-flex-1 tw-h-52">
+            <CardComponent class="tw-flex-1 height-full-card">
               <textarea
                 class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"
               ></textarea>
             </CardComponent>
-            <CardComponent class="tw-flex-1 tw-h-52">
+            <CardComponent class="tw-flex-1 height-full-card">
               <textarea
                 class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"
               ></textarea>
@@ -253,7 +253,7 @@ const rows = [
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .dailyRoom .q-table th {
-  @apply tw-text-sm tw-border-r-4 tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-white
+  @apply tw-text-sm tw-border-r-4 tw-border-t-0 tw-border-l-0 tw-border-b-0 tw-border-white;
 }
 .dailyRoom .q-table tbody td {
   font-size: 14px;
@@ -263,15 +263,15 @@ const rows = [
   background-color: #fafafa;
 }
 .dailyRoom .q-table__bottom {
-  @apply tw-inline-flex tw-justify-between tw-text-sm tw-border-2 tw-border-b-0 tw-border-l-0 tw-border-r-0 tw-border-[#069550] tw-bg-[#fafafa] tw-relative
+  @apply tw-inline-flex tw-justify-between tw-text-sm tw-border-2 tw-border-b-0 tw-border-l-0 tw-border-r-0 tw-border-[#069550] tw-bg-[#fafafa] tw-relative;
 }
 .dailyRoom .q-table__control:nth-child(2) {
-  @apply tw-absolute
+  @apply tw-absolute;
 }
 .dailyRoom .q-table__bottom .q-btn .q-icon {
-  @apply tw-text-3xl tw-text-[#069550]
+  @apply tw-text-3xl tw-text-[#069550];
 }
 .dailyRoom .disabled * {
-  @apply tw-opacity-0
+  @apply tw-opacity-0;
 }
 </style>

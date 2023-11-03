@@ -5,7 +5,7 @@
         <button class="tw-mx-1">
           <q-icon
             name="fa-regular fa-square-check"
-            class="tw-text-4xl"
+            class="tw-text-4xl" 
             style="color: #069550"
           />
         </button>
@@ -29,7 +29,7 @@
         class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-gap-5 tw-items-center tw-mt-8"
       >
         <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-          <CardComponent class="tw-w-80 tw-h-44">
+          <CardComponent class="tw-w-80 height-full-card">
             <h1 class="tw-text-black tw-font-semibold tw-text-xl">Display</h1>
             <div class="tw-mt-4">
               <input
@@ -59,7 +59,7 @@
             </div>
           </CardComponent>
 
-          <CardComponent class="tw-w-80 tw-h-44">
+          <CardComponent class="tw-w-80 height-full-card">
             <h1 class="tw-text-black tw-font-semibold tw-text-xl">Sorting :</h1>
             <div class="tw-mt-4">
               <select
@@ -78,12 +78,12 @@
           </CardComponent>
         </div>
         <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-          <CardComponent class="tw-flex-2 tw-h-52">
+          <CardComponent class="tw-flex-2 height-full-card">
             <textarea
               class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"
             ></textarea>
           </CardComponent>
-          <CardComponent class="tw-flex-2 tw-h-52">
+          <CardComponent class="tw-flex-2 height-full-card">
             <textarea
               class="tw-w-full tw-h-44 tw-p-0 tw-border-none tw-outline-none tw-resize-none overflow-auto"
             ></textarea>
@@ -196,7 +196,7 @@ const dataRows = [
   {
     number: '#212224',
     cat: 'Ambatublow',
-    l: '',
+    l: 'wad',
     stat: '10:05:21',
     roomtype: 'Suite',
     sunday: 'Available',
@@ -210,7 +210,7 @@ const dataRows = [
   {
     number: '#212225',
     cat: 'Ambatublow',
-    l: '',
+    l: 'wad',
     stat: '10:06:21',
     roomtype: 'Standard',
     sunday: 'Available',
@@ -224,7 +224,7 @@ const dataRows = [
   {
     number: '#212226',
     cat: 'Ambatublow',
-    l: '',
+    l: 'wad',
     stat: '10:07:21',
     roomtype: 'Deluxe',
     sunday: 'Occupied',
@@ -238,7 +238,7 @@ const dataRows = [
   {
     number: '#212227',
     cat: 'Ambatublow',
-    l: '',
+    l: 'wad',
     stat: '10:08:21',
     roomtype: 'Single',
     sunday: 'Available',
@@ -252,7 +252,7 @@ const dataRows = [
   {
     number: '#212228',
     cat: 'Ambatublow',
-    l: '',
+    l: 'wad',
     stat: '10:09:21',
     roomtype: 'Double',
     sunday: 'Available',
