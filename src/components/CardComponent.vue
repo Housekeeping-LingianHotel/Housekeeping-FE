@@ -2,6 +2,7 @@
   <div class="container">
     <q-card
       class="my-card tw-rounded-[20px] tw-border-[1px] tw-border-[#00000033]"
+      :class="classname"
     >
       <q-card-section class="tw-h-full">
         <slot></slot>
