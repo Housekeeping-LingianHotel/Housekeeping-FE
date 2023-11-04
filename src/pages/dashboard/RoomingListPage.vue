@@ -10,7 +10,7 @@
           <div class="tw-flex tw-items-center tw-gap-4">
             <h6 class="tw-text-lg tw-font-bold">Display</h6>
             <q-btn-dropdown
-              class="tw-w-52 justify-between-btn"
+              class="tw-w-52 justify-between-btn black-text-btn"
               align="left"
               dropdown-icon="expand_more"
               color="grey"
@@ -51,7 +51,7 @@
           <div class="tw-flex tw-items-center tw-gap-4">
             <h6 class="tw-text-lg tw-font-bold">Sorting</h6>
             <q-btn-dropdown
-              class="tw-w-52 justify-between-btn"
+              class="tw-w-52 justify-between-btn black-text-btn"
               align="left"
               dropdown-icon="expand_more"
               color="grey"
@@ -465,24 +465,6 @@ export default {
 </script>
 
 <style>
-/* Button */
-.justify-between-btn .q-btn__content {
-  justify-content: space-between;
-  color: black;
-}
-
-/* Input */
-.input-height-fit .q-field__control {
-  height: fit-content;
-  padding: 0;
-}
-.q-field__native {
-  padding: 2px 8px;
-}
-.input-height-fit .q-field__control::after {
-  height: 100%;
-}
-
 /* Table 2 */
 .rooming-list-table thead tr:first-child th {
   background-color: rgba(6, 119, 205, 1);
