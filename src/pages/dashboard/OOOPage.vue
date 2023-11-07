@@ -94,23 +94,19 @@
             <!-- From -->
             <div class="tw-flex tw-items-center tw-gap-4">
               <h6 class="tw-text-lg tw-font-bold">From :</h6>
-              <q-input
-                class="input-height-fit"
-                outlined
-                color="black"
-                v-model="fromInput"
-              />
+              <date-input-component
+                  @getDate="getFromDate"
+                  @getFormattedDate="getFromFormattedDate"
+                />
             </div>
 
             <!-- To -->
             <div class="tw-flex tw-items-center tw-gap-4">
               <h6 class="tw-text-lg tw-font-bold">To :</h6>
-              <q-input
-                class="input-height-fit"
-                outlined
-                color="black"
-                v-model="toInput"
-              />
+              <date-input-component
+                  @getDate="getFromDate"
+                  @getFormattedDate="getFromFormattedDate"
+                />
             </div>
           </div>
         </div>
@@ -124,6 +120,7 @@ import { ref } from 'vue';
 import CardComponent from 'src/components/CardComponent.vue';
 import TableComponent from 'src/components/TableComponent.vue';
 import { ColumnInterface } from 'src/types/table';
+import DateInputComponent from 'src/components/DateInputComponent.vue';
 
 const tableColumns1: ColumnInterface[] = [
   {
@@ -255,7 +252,7 @@ const tableRows1 = [
 
   export default {
     name: "OOOPage",
-    components: { CardComponent, TableComponent },
+    components: { CardComponent, TableComponent, DateInputComponent },
 
     data() {
     return {
@@ -267,6 +264,10 @@ const tableRows1 = [
     return {
       fromInput: ref(''),
       toInput: ref(''),
+      fromDate: '',
+      fromFormattedDate: '',
+      toDate: '',
+      toFormattedDate: '',
     };
   },
 };
