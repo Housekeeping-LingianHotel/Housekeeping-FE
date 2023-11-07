@@ -80,6 +80,10 @@
     </div>
     
       <TableComponent :columns="tableColumns1" :rows="tableRows1" class="tw-px-12 tw-py-4 tw-w-full"/>
+      <div class="tw-flex tw-flex-row tw-justify-center tw-gap-2">
+            <q-btn push color="grey" text-color="primary" label="Ok" />
+            <q-btn push color="grey" text-color="primary" label="Print" />
+      </div>
 </CardComponent>
   </q-page>
 </template>
