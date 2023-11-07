@@ -1,6 +1,6 @@
   <template>
     <q-page class="tw-container bg-white flex">
-      <CardComponent class="tw-overflow-x-auto tw-overflow-y-auto tw-m-8">
+      <CardComponent class="tw-overflow-x-auto tw-overflow-y-auto tw-m-8 tw-w-full">
         <div class="tw-flex tw-flex-col tw-gap-2">
         <!-- Display Dropdown & Print Btn -->
         <div class="tw-w-full tw-flex tw-justify-between">
@@ -115,12 +115,10 @@
           </div>
         </div>
       </div>
-        <TableComponent :columns="tableColumns1" :rows="tableRows1" class="tw-px-12 tw-py-4"/>
-        
+        <TableComponent :columns="tableColumns1" :rows="tableRows1" class="tw-px-12 tw-py-4 tw-w-full"/>
   </CardComponent>
     </q-page>
   </template>
-
   <script lang="ts">
 import { ref } from 'vue';
 import CardComponent from 'src/components/CardComponent.vue';
