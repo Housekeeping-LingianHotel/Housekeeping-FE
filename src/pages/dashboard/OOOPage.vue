@@ -115,41 +115,163 @@
           </div>
         </div>
       </div>
-        <TableComponent>
-          
-        </TableComponent>
-        <table class="tw-table tw-m-5 tw-shadow-md w-rounded-full">
-          <thead>
-            <tr>
-              <th class="tw-px-11 tw-py-2">Room No</th>
-              <th class="tw-px-11 tw-py-2">Reason/ Room 0-0-0</th>
-              <th class="tw-px-11 tw-py-2">0-0-0 Until</th>
-              <th class="tw-px-16 tw-py-2">ID</th>
-              <th class="tw-px-16 tw-py-2">Dept</th>
-              <th class="tw-px-16 tw-py-2">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 1</td>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 2</td>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 3</td>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 4</td>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 5</td>
-              <td class="tw-px-4 tw-py-4 tw-text-black tw-text-center">Data 6</td>
-            </tr>
-          </tbody>
-        </table>
+        <TableComponent :columns="tableColumns1" :rows="tableRows1" class="tw-px-12 tw-py-4"/>
+        
   </CardComponent>
     </q-page>
   </template>
 
   <script lang="ts">
+import { ref } from 'vue';
 import CardComponent from 'src/components/CardComponent.vue';
 import TableComponent from 'src/components/TableComponent.vue';
+import { ColumnInterface } from 'src/types/table';
+
+const tableColumns1: ColumnInterface[] = [
+  {
+    name: 'room-no',
+    label: 'Room No.',
+    field: (row) => row.name,
+    align: 'left',
+    required: true,
+    sortable: true,
+  },
+  {
+    name: 'reason_room',
+    label: 'Reason/ Room 0-0-0',
+    field: 'reason_room',
+    align: 'left',
+    sortable: true,
+  },
+  {
+    name: 'from',
+    label: '0-0-0 From',
+    field: 'from',
+    align: 'left',
+    sortable: true,
+  },
+  {
+    name: 'until',
+    label: '0-0-0 Until',
+    field: 'until',
+    align: 'left',
+    sortable: true,
+  },
+  {
+    name: 'id',
+    label: 'ID',
+    field: 'id',
+    align: 'left',
+    sortable: true,
+  },
+  {
+    name: 'dept',
+    label: 'Dept',
+    field: 'dept',
+    sortable: true,
+    align: 'left',
+  },
+  {
+    name: 'description',
+    label: 'Description',
+    field: 'description',
+    sortable: true,
+    align: 'left',
+  },
+];
+
+const tableRows1 = [
+  {
+    name: '#212121',
+    reason_room: '#212121',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'title subtitle',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+  {
+    name: '#424242',
+    reason_room: '#424242',
+    from: 'body',
+    until: 'body',
+    id: 'body',
+    dept: 'body',
+    description: 'body',
+  },
+  {
+    name: '#616161',
+    reason_room: '#616161',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'title subtitile',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+  {
+    name: '#001B3D',
+    reason_room: '#001B3D ',
+    from: 'title subtitle',
+    until: 'title subtitle',
+    id: 'title subtitle',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+  {
+    name: '#212121',
+    reason_room: '#212121 ',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'body',
+    dept: 'body',
+    description: 'body',
+  },
+  {
+    name: '#212121',
+    reason_room: '#212121 ',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'title subtitle',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+  {
+    name: '#212121',
+    reason_room: '#212121 ',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'title subtitle',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+  {
+    name: '#212121',
+    reason_room: '#212121 ',
+    from: '10:00:02',
+    until: '10:00:02',
+    id: 'title subtitle',
+    dept: 'title subtitle',
+    description: 'title subtitle',
+  },
+];
 
   export default {
     name: "OOOPage",
-    components: { CardComponent, TableComponent }
+    components: { CardComponent, TableComponent },
+
+    data() {
+    return {
+      tableColumns1,
+      tableRows1,
+    };
+  },
+  setup() {
+    return {
+      fromInput: ref(''),
+      toInput: ref(''),
+    };
+  },
 };
+
+
   </script>
