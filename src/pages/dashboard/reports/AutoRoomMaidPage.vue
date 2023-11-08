@@ -1,5 +1,6 @@
 <template>
   <q-page class="container bg-white flex">
+<<<<<<< HEAD:src/pages/admin/reports/AutoRoomMaidPage.vue
     <page-subheading />
     <CardComponent class="card q-py-md">
       <div class="subbg"></div>
@@ -162,14 +163,19 @@ Room Boy Cleaning Sheet
  </table>
   </CardComponent>
   </CardComponent>
+=======
+    <h1 class="tw-text-4xl tw-font-bold">Auto Room Maid</h1>
+>>>>>>> f74da66e8268fc6e49f2ee72acc668cdaefd8aa6:src/pages/dashboard/reports/AutoRoomMaidPage.vue
   </q-page>
 </template>
 
 <script lang="ts">
+<<<<<<< HEAD:src/pages/admin/reports/AutoRoomMaidPage.vue
 import PageSubheading from 'src/components/PageSubheading.vue';
+=======
+>>>>>>> f74da66e8268fc6e49f2ee72acc668cdaefd8aa6:src/pages/dashboard/reports/AutoRoomMaidPage.vue
 export default {
   name: 'AutoRoomMaidPage',
-  components: { PageSubheading },
 };
 
 </script>

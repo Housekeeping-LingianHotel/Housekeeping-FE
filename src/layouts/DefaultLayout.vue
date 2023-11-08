@@ -1,30 +1,44 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header
-      reveal
-      bordered
-      class="text-black q-px-sm q-py-xs"
-      style="background: rgba(97, 97, 97, 1)"
-    >
-      <q-toolbar>
-        <q-toolbar-title
-          style="color: rgba(255, 255, 255, 1); font-weight: bold"
-        >
+  <q-layout view="lHh Lpr lFf" class="tw-overflow-x-hidden">
+    <q-header reveal bordered>
+      <q-toolbar class="tw-text-black tw-px-4 tw-py-2 tw-bg-[rgba(97,97,97,1)]">
+        <q-toolbar-title class="tw-text-white tw-font-bold">
           Housekeeping Management System
         </q-toolbar-title>
 
         <!-- Icon BTNs -->
         <div>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_notifications" />
           </q-btn>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_email" />
           </q-btn>
-          <q-btn padding="4px 10px" flat>
+          <q-btn round padding="8px" flat>
             <q-icon size="32px" color="white" name="o_account_circle" />
           </q-btn>
         </div>
+      </q-toolbar>
+
+      <!-- Breadcrumbs -->
+      <q-toolbar
+        class="tw-font-medium tw-text-black tw-h-fit tw-w-full tw-py-3 tw-px-4 tw-bg-[rgba(212,228,206,1)]"
+      >
+        <q-breadcrumbs v-if="!$route.path.startsWith('/reports')" gutter="sm">
+          <q-breadcrumbs-el class="tw-gap-1">
+            <q-icon :name="$route.meta.icon" size="24px" />
+            {{ $route.name?.toString() }}
+          </q-breadcrumbs-el>
+        </q-breadcrumbs>
+
+        <q-breadcrumbs v-else gutter="xs">
+          <q-breadcrumbs-el class="tw-text-black tw-gap-1">
+            <q-icon name="analytics" size="24px" />
+            Reports
+          </q-breadcrumbs-el>
+
+          <q-breadcrumbs-el :label="$route.name?.toString()" />
+        </q-breadcrumbs>
       </q-toolbar>
     </q-header>
 
@@ -35,54 +49,44 @@
       v-model="leftDrawerOpen"
       side="left"
       bordered
-      style="display: flex; flex-direction: column"
+      class="tw-flex tw-flex-col"
     >
-      <q-item style="flex: 1 1 0%; margin: 8px">
+      <q-item class="tw-m-2">
         <q-item-section>
-          <q-img src="../../public/images/Lingian-Logo.png" />
+          <q-img src="/images/Lingian-Logo.png" fit="contain" />
         </q-item-section>
       </q-item>
 
-      <q-scroll-area style="flex: 2 2 0%">
+      <q-scroll-area class="tw-flex-[3_3_0%]">
         <q-list>
           <!-- Menu List -->
-          <template v-for="(menuItem, index) in menuList" :key="index">
+          <template v-for="(menu, index) in menus" :key="index">
             <q-item
-              v-if="$route.name !== menuItem.name"
-              style="padding: 0px 16px; margin: 2px 0"
+              v-if="$route.name !== menu.name"
+              class="tw-px-4 tw-py-0 tw-my-[2px]"
             >
               <q-btn
                 align="left"
-                style="width: 100%; padding: 0 16px"
+                class="tw-w-full tw-py-0 tw-px-4"
                 no-caps
                 unelevated
-                @click="
-                  router.push({
-                    name: menuItem.name,
-                  })
-                "
+                @click="pushRoute({ name: menu.name })"
               >
-                <div style="text-align: left; padding: 4px 0">
-                  {{ menuItem.name }}
+                <div class="tw-text-left tw-py-1 tw-px-0">
+                  {{ menu.name }}
                 </div>
               </q-btn>
             </q-item>
 
-            <q-item v-else style="padding: 0 16px; margin: 2px 0">
+            <q-item v-else class="tw-px-4 tw-py-0 tw-my-[2px]">
               <q-btn
                 align="left"
-                style="
-                  width: 100%;
-                  padding: 0 16px;
-                  background: rgba(230, 246, 236, 1);
-                  color: rgba(0, 100, 48, 1);
-                  font-weight: bold;
-                "
+                class="tw-w-full tw-py-0 tw-px-4 tw-font-bold tw-bg-[rgba(230,246,236,1)] tw-text-[rgba(0,100,48,1)]"
                 no-caps
                 unelevated
               >
-                <div style="text-align: left; padding: 4px 0">
-                  {{ menuItem.name }}
+                <div class="tw-text-left tw-py-1 tw-px-0">
+                  {{ menu.name }}
                 </div>
               </q-btn>
             </q-item>
@@ -90,48 +94,42 @@
 
           <!-- Report List -->
           <q-expansion-item
-            style="margin: 0 16px; font-weight: 500"
-            :class="{ 'active-expansion': isActive }"
+            class="tw-my-0 tw-mx-4 tw-font-medium"
+            :class="{
+              'tw-bg-[rgba(230,246,236,1)] tw-text-[rgba(0,100,48,1)] tw-font-bold':
+                isActive,
+            }"
             @update:model-value="toggleActive"
             label="Reports"
           >
-            <q-list style="background-color: white">
-              <template v-for="(reportItem, index) in reportList" :key="index">
+            <q-list class="tw-bg-white">
+              <template v-for="(reportMenu, index) in reportMenus" :key="index">
                 <q-item
-                  v-if="$route.name !== reportItem.name"
-                  style="padding: 0; margin: 0px 8px"
+                  v-if="$route.name !== reportMenu.name"
+                  class="tw-p-0 tw-my-0 tw-mx-2"
                 >
                   <q-btn
                     align="left"
-                    style="width: 100%; padding: 0 16px; color: black"
+                    class="tw-w-full tw-py-0 tw-px-4 tw-text-black"
                     no-caps
                     unelevated
-                    @click="
-                      router.push({
-                        name: reportItem.name,
-                      })
-                    "
+                    @click="pushRoute({ name: reportMenu.name })"
                   >
-                    <div style="text-align: left; padding: 4px 0">
-                      {{ reportItem.name }}
+                    <div class="tw-text-left tw-py-1">
+                      {{ reportMenu.name }}
                     </div>
                   </q-btn>
                 </q-item>
 
-                <q-item v-else style="padding: 0; margin: 0px 8px">
+                <q-item v-else class="tw-p-0 tw-my-0 tw-mx-2">
                   <q-btn
                     align="left"
-                    style="
-                      width: 100%;
-                      padding: 0 16px;
-                      color: rgba(0, 100, 48, 1);
-                      font-weight: bold;
-                    "
+                    class="tw-w-full tw-py-0 tw-px-4 tw-text-[rgba(0,100,48,1)] tw-font-bold"
                     no-caps
                     unelevated
                   >
-                    <div style="text-align: left; padding: 4px 0">
-                      {{ reportItem.name }}
+                    <div class="tw-text-left tw-py-1">
+                      {{ reportMenu.name }}
                     </div>
                   </q-btn>
                 </q-item>
@@ -143,150 +141,53 @@
 
       <!-- Logout BTN -->
       <q-btn
-        style="padding: 16px 0"
+        class="tw-py-4 tw-px-0"
         icon-right="o_logout"
         no-caps
         label="Logout"
-      ></q-btn>
+        @click="router.push('/login')"
+      />
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <Transition name="slide-fade" appear mode="out-in">
+        <router-view :key="$route.fullPath" />
+      </Transition>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { useRouter } from 'vue-router';
+import { menus, reportMenus } from 'src/data/menus';
 
 export default {
   name: 'DefaultLayout',
-  data() {
-    const menuList = [
-      {
-        path: '/dashboard',
-        name: 'Dashboard',
-      },
-      {
-        path: '/arrival',
-        name: 'Arrival & Departure Room',
-      },
-      {
-        path: '/cleaned',
-        name: 'Cleaned Room',
-      },
-      {
-        path: '/dirty',
-        name: 'Dirty Room',
-      },
-      {
-        path: '/room-occupancy',
-        name: 'Room Occupancy Overview',
-      },
-      {
-        path: '/status',
-        name: 'Status',
-      },
-      {
-        path: '/ooo',
-        name: 'O-O-O and Off Market Rooms',
-      },
-      {
-        path: '/rooming-list',
-        name: 'Rooming List',
-      },
-      {
-        path: '/discrepancy',
-        name: 'Discrepancy',
-      },
-      {
-        path: '/lost-found',
-        name: 'Lost & Found',
-      },
-    ];
-
-    const reportList = [
-      {
-        path: '/reports/room-maid',
-        name: 'Room Maid Report',
-      },
-      {
-        path: '/reports/auto-room-maid',
-        name: 'Auto Room Maid Sheet',
-      },
-      {
-        path: '/reports/daily-room',
-        name: 'Daily Room Usage',
-      },
-      {
-        path: '/reports/reservation-room',
-        name: 'Reservation Room Plan',
-      },
-      {
-        path: '/reports/room-count',
-        name: 'Room Count Sheet',
-      },
-      {
-        path: '/reports/room-plan',
-        name: 'Room Plan',
-      },
-      {
-        path: '/reports/task-report',
-        name: 'Task Report List',
-      },
-      {
-        path: '/reports/guest-preference',
-        name: 'Guest Preference List',
-      },
-      {
-        path: '/reports/vip-list',
-        name: 'VIP List',
-      },
-      {
-        path: '/reports/room-change',
-        name: 'Room Change Report',
-      },
-      {
-        path: '/reports/monthly-room',
-        name: 'Monthly Room Occupancy Forecast',
-      },
-      {
-        path: '/reports/extrabed-availabilty',
-        name: 'Extrabed Availabilty',
-      },
-      {
-        path: '/reports/stock-onhand',
-        name: 'Stock Onhand List',
-      },
-      {
-        path: '/reports/purchase-request',
-        name: 'Purchase Request',
-      },
-    ];
-
-    return {
-      isActive: false,
-      menuList,
-      reportList,
-    };
-  },
   setup() {
     const router = useRouter();
 
-    return { router };
+    return { router, isActive: false, menus, reportMenus };
   },
   methods: {
     toggleActive() {
       this.isActive = !this.isActive;
+    },
+    pushRoute(path) {
+      this.router.push(path);
     },
   },
 };
 </script>
 
 <style scoped>
-.active-expansion {
-  background-color: rgba(230, 246, 236, 1) !important;
-  color: rgba(0, 100, 48, 1) !important;
-  font-weight: bold !important;
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-3%);
+  opacity: 0;
 }
 </style>

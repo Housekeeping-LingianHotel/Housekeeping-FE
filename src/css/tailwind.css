@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .height-full-card */
+.height-full-card .q-card {
+  @apply tw-h-full
+}
+
+/* .justify-between-btn */
+.justify-between-btn .q-btn__content {
+  @apply tw-justify-between
+}
+
+/* .black-text-btn */
+.black-text-btn .q-btn__content {
+  @apply tw-text-black
+}
+
+/* .input-height-fit */
+.input-height-fit .q-field__control {
+  @apply tw-h-fit tw-p-0
+}
+
+.input-height-fit .q-field__native {
+  @apply tw-py-[2px] tw-px-2
+}
+
+.input-height-fit .q-field__control::after {
+  @apply tw-h-full
+}
