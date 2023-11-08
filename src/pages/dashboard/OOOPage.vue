@@ -270,6 +270,24 @@ const tableRows1 = [
       toFormattedDate: '',
     };
   },
+    methods: {
+    getFromDate(date: string) {
+      this.fromDate = date;
+      console.log('From date:', this.fromDate);
+    },
+    getFromFormattedDate(formattedDate: string) {
+      this.fromFormattedDate = formattedDate;
+      console.log('From formatted date:', this.fromFormattedDate);
+    },
+    getToDate(date: string) {
+      this.toDate = date;
+      console.log('To date:', this.toDate);
+    },
+    getToFormattedDate(formattedDate: string) {
+      this.toFormattedDate = formattedDate;
+      console.log('To formatted date:', this.toFormattedDate);
+    },
+  },
 };
 
 
