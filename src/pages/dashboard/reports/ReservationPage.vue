@@ -2,20 +2,23 @@
   <q-page class="tw-p-8">
     <CardComponent class="tw-p-3">
       <div class="tw-flex justify-end">
-        <button class="tw-mx-1">
-          <q-icon
-            name="fa-regular fa-square-check"
-            class="tw-text-4xl" 
+        <q-btn
+            class="tw-mx-1"
+            icon="fa-regular fa-square-check"
             style="color: #069550"
+            flat
+            size="24px"
+            padding="0px"
           />
-        </button>
-        <button class="tw-mx-2">
-          <q-icon
-            name="fa-solid fa-print"
-            class="tw-text-4xl"
+
+           <q-btn
+            class="tw-mx-1"
+            icon="o_print"
             style="color: #069550"
+            flat
+            size="24px"
+            padding="0px"
           />
-        </button>
       </div>
       <div class="tw-mt-6">
         <TableComponent
@@ -29,51 +32,59 @@
         class="tw-flex tw-flex-col md:tw-flex-row tw-justify-between tw-gap-5 tw-items-center tw-mt-8"
       >
         <div class="tw-flex tw-flex-col md:tw-flex-row tw-gap-4">
-          <CardComponent class="tw-w-80 height-full-card">
+          <CardComponent class="tw-w-60 height-full-card">
             <h1 class="tw-text-black tw-font-semibold tw-text-xl">Display</h1>
             <div class="tw-mt-4">
-              <input
-                type="date"
-                id="tanggal"
-                name="tanggal"
-                class="tw-border tw-rounded-xl tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
-              />
+              <DateInputComponent class="tw-rounded-lg tw-w-full" />
             </div>
             <div
-              class="tw-flex tw-flex-col md:tw-flex-row tw-justify-start tw-gap-5 tw-mt-4 tw-px-3"
+              class="tw-flex tw-flex-col md:tw-flex-row tw-justify-start tw-mt-4 tw-px-3"
             >
-              <q-card class="tw-w-10 tw-text-center">
-                <button>
-                  <q-icon name="fa-solid fa-chevron-left" />
-                </button>
-              </q-card>
-              <q-card class="tw-w-10 tw-text-center">
-                <button>
-                  <q-icon name="fa-solid fa-chevron-right" />
-                </button>
-              </q-card>
-
-              <button class="tw-pl-44">
-                <q-icon name="fa-solid fa-question" />
+              <div class="tw-w-10 tw-text-center">
+                <q-btn
+                  size="10px"
+                  padding="1px"
+                  flat 
+                  icon="fa-solid fa-chevron-left"
+                />
+              </div>
+              <div class="tw-w-10 tw-text-center">
+                <q-btn
+                  size="10px"
+                  padding="1px"
+                  flat
+                  icon="fa-solid fa-chevron-right"
+                />
+              </div>
+              <button class="tw-pl-20 ">
+                <q-btn size="10px" flat padding="1px" icon="fa-solid fa-question" />
               </button>
             </div>
           </CardComponent>
 
-          <CardComponent class="tw-w-80 height-full-card">
+          <CardComponent class="tw-w-60 height-full-card">
             <h1 class="tw-text-black tw-font-semibold tw-text-xl">Sorting :</h1>
             <div class="tw-mt-4">
-              <select
-                
-                class="tw-border tw-rounded-lg tw-py-2 tw-px-3 tw-mt-1 tw-w-full"
+              <q-btn-dropdown
+                class="tw-w-full justify-between-btn date-btn tw-rounded-lg"
+                align="left"
+                dropdown-icon="expand_more"
+                no-caps
+                color="grey"
+                outline
+                :label="selectedColumn"
               >
-                <option
-                  v-for="column in dataColumns"
-                  :key="column.name"
-                  :value="column.name"
-                >
-                  {{ column.label }}
-                </option>
-              </select>
+                <q-list>
+                  <q-item
+                    clickable
+                    v-for="column in dataColumns"
+                    :key="column.name"
+                    @click="handleColumnClick(column.name)"
+                    persistent
+                    >{{ column.name }}</q-item
+                  >
+                </q-list>
+              </q-btn-dropdown>
             </div>
           </CardComponent>
         </div>
@@ -97,14 +108,23 @@
 <script lang="ts">
 import CardComponent from 'src/components/CardComponent.vue';
 import TableComponent from 'src/components/TableComponent.vue';
+import DateInputComponent from 'src/components/DateInputComponent.vue';
+import { ref } from 'vue';
 
 export default {
   name: 'DailyRoomPage',
-  components: { CardComponent, TableComponent },
+  components: { CardComponent, TableComponent, DateInputComponent },
   setup() {
+    const selectedColumn = ref(dataColumns.name);
+
+    const handleColumnClick = (columnName) => {
+      selectedColumn.value = columnName;
+    };
     return {
       dataColumns,
       dataRows,
+      handleColumnClick,
+      selectedColumn,
     };
   },
 };
